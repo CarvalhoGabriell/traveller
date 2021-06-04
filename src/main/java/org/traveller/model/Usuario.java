@@ -1,4 +1,4 @@
-package or.traveller.model;
+package org.traveller.model;
 
 import java.util.Calendar;
 
