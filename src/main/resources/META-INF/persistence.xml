@@ -3,18 +3,19 @@
 <persistence-unit name="traveller-persistence" transaction-type="RESOURCE_LOCAL">
   <description>Forge Persistence Unit</description>
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+    <class>org.traveller.model.Usuario</class>
+    
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
     
     <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-	<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/traveller" />
-	<property name="javax.persistence.jdbc.user" value="gabs" />
-	<property name="javax.persistence.jdbc.password" value="mysql123" />
+	<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/traveller" />
+	<property name="javax.persistence.jdbc.user" value="root" />
+	<property name="javax.persistence.jdbc.password" value="1234" />
 			
     
     
-    <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+    <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.transaction.flush_before_completion" value="true"/>

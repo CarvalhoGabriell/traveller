@@ -36,5 +36,22 @@ public class UsuarioDao {
 		manager.close();
 	}
 	
+	public Usuario findById(int id) {
+		EntityManager manager= JPAUtil.getEntityManager();
+		return manager.find(Usuario.class, id);
+	}
+	
+	public void delete(int id) {
+		EntityManager manager= JPAUtil.getEntityManager();
+		Usuario user = manager.find(Usuario.class, id);
+		manager.getTransaction().begin();
+		user = manager.merge(user);
+		manager.remove(user);
+		manager.flush();
+		System.out.println("Deletando Usuario ID "+user.getIdUsuario());
+		
+		manager.getTransaction().commit();
+		manager.close();
+	}
 
 }
