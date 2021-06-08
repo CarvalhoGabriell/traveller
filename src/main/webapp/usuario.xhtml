@@ -54,6 +54,18 @@
 	                </p:datePicker>
 	            </div>
 			</div>
+			
+			 <div class="p-field p-grid">
+			    <h:outputLabel for="typo" class="p-col-fixed" style="width:100px" value="tipo" />
+			    <div class="p-col">
+			        <p:inputText id="tipo" value="#{usuarioBean.usuario.tipo}" required="true" requiredMessage="O tipo é obrigatório">
+			        	<f:ajax event="blur" render="messages" />
+			        </p:inputText>
+			        
+			    </div>
+			</div>
+			
+			
 		    <f:facet name="footer">
 		        <p:commandButton icon="pi pi-check" value="Save" action="#{usuarioBean.save}">
 		        	<f:ajax execute="@form" render="messages" />
