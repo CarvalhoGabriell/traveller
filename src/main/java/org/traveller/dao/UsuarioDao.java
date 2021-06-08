@@ -55,7 +55,8 @@ public class UsuarioDao {
 		manager.close();
 	}
 	
-	public boolean exist(Usuario usuario) {
+	public Usuario exist(Usuario usuario) {
+		Usuario verifica = new Usuario();
 		EntityManager manager = JPAUtil.getEntityManager();
 		TypedQuery<Usuario> query = manager.createQuery("SELECT u FROM Usuario u WHERE "
 									+ "u.email = :email AND "
@@ -64,11 +65,11 @@ public class UsuarioDao {
 		query.setParameter("senha", usuario.getSenha());
 		
 		try {
-			query.getSingleResult();
+			verifica = query.getSingleResult();
 		}catch(NoResultException e) {
-			return false;
+			return null;
 		}
-		return true;
+		return verifica;
 	}
 
 }

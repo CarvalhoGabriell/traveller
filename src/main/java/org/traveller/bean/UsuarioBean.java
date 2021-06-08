@@ -23,11 +23,15 @@ public class UsuarioBean {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		
-		boolean exist = new UsuarioDao().exist(usuario);
+		Usuario exist = new UsuarioDao().exist(usuario);
 		
-		if(exist && usuario.getTipo() == "admin") {
-			context.getExternalContext().getSessionMap().put("usuario", usuario);
-			return "usuario?faces-redirect=true";
+		if(exist != null) {
+			context.getExternalContext().getSessionMap().put("usuario", exist);
+			
+			if(exist.getTipo().equals("admin")) {
+				return "listarUsuario?faces-redirect=true";
+			}
+			return "index?faces-redirect=true";
 		}
 		
 		context.getExternalContext().getFlash().setKeepMessages(true);

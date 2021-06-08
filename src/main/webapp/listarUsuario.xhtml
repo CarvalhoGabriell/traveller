@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<div class="card product">
+		    <h:form id="form">
+		        <p:dataView var="usuario" 
+		        			value="#{usuarioBean.usuarios}" 
+		        			rows="5" 
+		        			paginator="true"
+		                    rowsPerPageTemplate="5,10"
+		                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		                    gridIcon="pi pi-th-large" 
+		                    listIcon="pi pi-bars">
+		
+		            <p:dataViewGridItem>
+		                <div class="product-grid-item card border-1">
+		                    <div class="product-grid-item-top">
+		                        <div>
+		                         
+		                            <span class="product-category">#{product.category}</span>
+		                        </div>
+		                        <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+		                    </div>
+		                    <div class="product-grid-item-content">
+		                        <p:graphicImage name="/resources/images/naruto.jpg" library="demo"/>
+		                        <div class="product-name">#{usuario.nome}</div>
+		                        <div class="product-description">#{usuario.email}</div>
+		                        <div class="product-description">#{usuario.idUsuario}</div>
+		                        <h:outputText value="#{usuario.dtNascimento.time}" styleClass="user.date">
+                            	<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>
+                            	</h:outputText>
+		                        
+		                    </div>
+		                   
+		                </div>
+		            </p:dataViewGridItem>
+		
+		            <p:dataViewListItem>
+		                <div class="setup-list-item">
+		                    <p:graphicImage name="demo/images/product/"/>
+		                    <div class="setup-list-detail">
+		                        <div class="setup-name">#{usuario.nome}</div>
+		                        <div class="setup-description">#{usuario.email}</div>
+		                        <div class="setup-description">#{usuario.idUsuario}</div>
+		                        
+		                    </div>
+		                    <div class="setup-list-action">
+		                        <h:outputText value="#{usuario.dtNascimento.time}" styleClass="user.date">
+                            <f:convertDateTime pattern="dd/MM/yyyy" type="date"/>
+                        	</h:outputText>
+		                        
+		                    </div>
+		                </div>
+		            </p:dataViewListItem>
+		        </p:dataView>
+		    </h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+	
+
+
+</html>
