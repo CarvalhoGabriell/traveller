@@ -15,11 +15,16 @@ public class Empresa {
 	private String nome;
 	
 	private String link;
+	
+	private String descricao;
 
-	public Empresa(String nome, String link) {
+	
+
+	public Empresa(String nome, String link, String descricao) {
 		super();
 		this.nome = nome;
 		this.link = link;
+		this.descricao = descricao;
 	}
 
 	public Empresa() {
@@ -48,6 +53,14 @@ public class Empresa {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	

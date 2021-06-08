@@ -5,7 +5,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>org.traveller.model.Carro</class>
     <class>org.traveller.model.Usuario</class>
-    
+    <class>org.traveller.model.Empresa</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
     

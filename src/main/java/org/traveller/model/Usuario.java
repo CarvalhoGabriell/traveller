@@ -17,7 +17,8 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private String nome;
-
+	private String tipo;
+	
 	@Temporal(TemporalType.DATE)
 	private Calendar dtNascimento = Calendar.getInstance();
 
@@ -25,28 +26,39 @@ public class Usuario {
 
 	public Usuario() {super();}
 	
-	public Usuario(int idUsuario, String email, String senha, String nome, Calendar dtNascimento) {
+	public Usuario(int idUsuario, String email, String senha, String nome, Calendar dtNascimento, String  tipo) {
 		super();
 		this.idUsuario = idUsuario;
 		this.email = email;
 		this.senha = senha;
 		this.nome = nome;
 		this.dtNascimento = dtNascimento;
+		this.tipo = tipo;
 	}
 
 	
-	public Usuario(String email, String senha, String nome, Calendar dtNascimento) {
+	public Usuario(String email, String senha, String nome, Calendar dtNascimento, String tipo) {
 		super();
 		this.email = email;
 		this.senha = senha;
 		this.nome = nome;
 		this.dtNascimento = dtNascimento;
+		this.tipo = tipo;
 	}
 
 
 	//Getters and Setters
+	
 	public String getNome() {
 		return nome;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public void setNome(String nome) {

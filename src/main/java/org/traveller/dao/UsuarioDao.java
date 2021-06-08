@@ -3,6 +3,7 @@ package org.traveller.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import org.traveller.model.Usuario;
@@ -52,6 +53,23 @@ public class UsuarioDao {
 		
 		manager.getTransaction().commit();
 		manager.close();
+	}
+	
+	public Usuario exist(Usuario usuario) {
+		Usuario verifica = new Usuario();
+		EntityManager manager = JPAUtil.getEntityManager();
+		TypedQuery<Usuario> query = manager.createQuery("SELECT u FROM Usuario u WHERE "
+									+ "u.email = :email AND "
+									+ "u.senha = :senha", Usuario.class);
+		query.setParameter("email", usuario.getEmail());
+		query.setParameter("senha", usuario.getSenha());
+		
+		try {
+			verifica = query.getSingleResult();
+		}catch(NoResultException e) {
+			return null;
+		}
+		return verifica;
 	}
 
 }
