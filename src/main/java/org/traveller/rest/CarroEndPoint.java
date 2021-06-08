@@ -57,7 +57,7 @@ public class CarroEndPoint {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response delete(@PathParam("id") Long id, Carro carro) {
 		
-		carro = dao.findById(id);
+		carro = dao.findBy(id);
 		if (carro == null) {
 			
 			return Response
@@ -94,7 +94,7 @@ public class CarroEndPoint {
 		}
 		
 		carro.setId(id);
-		if (dao.findById(id) == null) {
+		if (dao.findBy(id) == null) {
 			return Response
 					.status(Response.Status.NOT_FOUND)
 					.build();
@@ -118,7 +118,7 @@ public class CarroEndPoint {
 	@Path("{id}")
 	public Response showAll(@PathParam("id") Long id) {
 		
-		Carro carro = dao.findById(id);
+		Carro carro = dao.findBy(id);
 		if (carro == null) {
 			
 			return Response

@@ -33,7 +33,7 @@ public class CarroBean {
 		this.carro = carro;
 	}
 
-	public List<Carro> getUsers() {
+	public List<Carro> getCarros() {
 		return new CarroDAO().getAllCarros();
 	}
 }

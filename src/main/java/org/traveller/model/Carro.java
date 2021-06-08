@@ -22,10 +22,10 @@ public class Carro {
 	
 	private String cor;
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private Combustivel tipoFuel;
 	
 	private int qtdLugares;
