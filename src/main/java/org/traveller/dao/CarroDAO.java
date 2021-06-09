@@ -27,7 +27,6 @@ public class CarroDAO {
 		return query.getResultList();
 	}
 	
-	
 	public void update(Carro carro){
 		EntityManager manager = JPAUtil.getEntityManager();
 		manager.getTransaction().begin();
@@ -41,7 +40,6 @@ public class CarroDAO {
 		EntityManager manager = JPAUtil.getEntityManager();
 		
 		return manager.find(Carro.class, id);
-		
 	}
 	
 	public void delete(Long id) {
@@ -53,7 +51,6 @@ public class CarroDAO {
 		manager.remove(carro);
 		manager.flush();
 		System.out.println("Carro deletado");
-		
 		manager.getTransaction().commit();
 		manager.close();
 	}
