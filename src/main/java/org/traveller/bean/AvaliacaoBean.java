@@ -40,12 +40,12 @@ public class AvaliacaoBean {
 				new FacesMessage("Avaliação realizada com sucesso. Obrigado pelo feedback!"));
 	}
 	
-	public List<Avaliacao> getAll() {
+	public List<Avaliacao> getAllcomments() {
 		
 		return new AvaliarDAO().showAll();
 	}
 	
-	public List<Avaliacao> getallSetups() {
+	public List<Avaliacao> getAllOne() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Usuario user = (Usuario) context.getExternalContext().getSessionMap().get("user");
 		return new AvaliarDAO().showOneComent(user);

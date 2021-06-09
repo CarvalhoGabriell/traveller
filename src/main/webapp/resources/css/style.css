@@ -1,6 +1,218 @@
 @charset "ISO-8859-1";
 
-.rodape {
+/*
+ STILOS PARA VIZUALIZAR OS PRODUTOS EM LISTA
+*/
+.form-card{
+	width: 25em;
+	margin: 1em auto;
+}
+
+
+.car-list-item {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+
+.car-list-item img {
+    width: 150px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-right: 2rem;
+}
+
+
+.car-list-item .car-list-detail {
+    flex: 1 1 0;
+    -ms-flex: 1 1 0;
+}
+
+.car-list-item .car-list-action {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+body .ui-button {
+    background: #2196F3;
+    color: #ffffff;
+    border: 1px solid #2196F3;
+    margin: 0;
+        margin-bottom: 0px;
+    outline: 0 none;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+
+.car-name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.car-description {
+    margin: 0 0 1rem 0;
+}
+
+.car-list-item .ui-rating {
+    margin: 0 0 .5rem 0;
+}
+
+.car-category {
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.car-category-icon {
+    vertical-align: middle;
+    margin-right: .5rem;
+}
+
+.car-badge{
+    background: #FEEDAF;
+    color: #8A5340;
+}
+
+.car-list-item .car-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    align-self: flex-end;
+}
+
+/*
+ FIM STILOS PARA VIZUALIZAR OS PRODUTOS EM LISTA
+*/
+
+
+body .ui-dataview .ui-dataview-content {
+    border: 0 none;
+    background: #ffffff;
+    color: #495057;
+    padding: 0;
+}
+
+
+.car-grid-item.border-1 {
+    border: 1px solid var(--surface-d);
+}
+
+.layout-content .card {
+    background: var(--surface-e);
+    padding: 2rem;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.car-grid-item .car-grid-item-top, .car-grid-item .car-grid-item-bottom {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.car-category-icon {
+    vertical-align: middle;
+    margin-right: .5rem;
+}
+
+.car-category {
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.car-badge{
+    background: #C8E6C9;
+    color: #256029;
+}
+
+.car-badge {
+    border-radius: 2px;
+    padding: .25em .5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+
+.car-grid-item .car-grid-item-content {
+    text-align: center;
+}
+
+.car-grid-item img {
+    width: 150px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-right: 2rem;
+}
+
+.car-name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.car-description {
+    margin: 0 0 1rem 0;
+}
+
+.car-grid-item .ui-rating {
+    margin: 0 0 1rem 0;
+}
+
+.car-grid-item .car-grid-item-top, .car-grid-item .car-grid-item-bottom {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.car-grid-item .car-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+body .ui-button {
+    background: #2196F3;
+    color: #ffffff;
+    border: 1px solid #2196F3;
+    margin: 0;
+    outline: 0 none;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
   background-color: rgb(35, 175, 175, 0.8);
   width: 100%;
   height: 100%;
@@ -8,7 +220,7 @@
   color: #eddfdf;
   font-family: 'Arial';
 }
-.rodape .maps {
+.footer .maps {
   position: relative;
   top: -60px;
   float: left;
@@ -34,11 +246,4 @@
   /*margin-bottom: 2px;*/
   font-family: 'Arial';
   font-weight: 600;
-}
-.navegacao .titulo-rodape {
-  margin-bottom: 30px;
-  font-size: 20px;
-  font-family: 'Arial';
-  font-weight: 600;
-  margin-left: 10px;
 }
