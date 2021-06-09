@@ -1,11 +1,73 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+>
 
-</body>
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<div class="card empresa">
+    <h:form id="form">
+        <p:dataView var="car" value="#{dataGridView.products}" rows="10" paginator="true"
+                    rowsPerPageTemplate="5,10"
+                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+
+            <p:dataViewGridItem>
+                <div class="product-grid-item card border-1">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-globe car-category-icon"/>
+                            <span class="car-tipo">#{car.modelo}</span>
+                        </div>
+                        <span class="car-badge">IN STOCK</span>
+                    </div>
+                    <div class="product-grid-item-content">
+                        <p:graphicImage name="/reosurces/images/local.png" library="demo"/>
+                        <div class="car-cor">#{car.cor}</div>
+                        <div class="car-ano">#{car.ano}</div>
+                        <div class="car-marca">#{car.marca}</div>
+                        <div class="car-fuel">#{car.tipoFuel}</div>
+                        <p:rating readonly="false" value="#{product.rating}"/>
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <p:commandButton type="button"
+                                            value="View Detail"
+                                            icon="pi pi-plus">
+                        </p:commandButton>
+                    </div>
+                </div>
+            </p:dataViewGridItem>
+
+            <p:dataViewListItem>
+                <div class="car-list-item">
+                    <p:graphicImage name="/resources/images/local.png"/>
+                    <div class="car-list-detail">
+                        <div class="car-marca">#{car.marca}</div>
+                        <div class="car-model">#{car.modelo}</div>
+                        <div class="car-cor">#{car.cor}</div>
+                         <div class="car-fuel">#{car.tipoFuel}</div>
+                        <p:rating readonly="false" value="#{product.rating}"/>
+                        <i class="pi pi-globe car-category-icon"/>
+                        <span class="car-tipo">#{car.tipo}</span>
+                    </div>
+                    <div class="car-list-action">
+                        <p:commandButton type="button"
+                                         value="View Details"
+                                         icon="pi pi-plus">
+                        </p:commandButton>
+                        <span class="car-badge">IN STOCK</span>
+                    </div>
+                </div>
+            </p:dataViewListItem>
+        </p:dataView>
+    </h:form>
+</div>
+	
+	</ui:define>
+</ui:composition>
 </html>
