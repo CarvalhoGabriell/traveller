@@ -1,1 +1,44 @@
 @charset "ISO-8859-1";
+
+.rodape {
+  background-color: rgb(35, 175, 175, 0.8);
+  width: 100%;
+  height: 100%;
+  padding: 9% 2% 13% 2%;
+  color: #eddfdf;
+  font-family: 'Arial';
+}
+.rodape .maps {
+  position: relative;
+  top: -60px;
+  float: left;
+}
+.rodape ul {
+  list-style-type: none;
+}
+.maps .titulo-rodape {
+  margin-top: -50px;
+  width: 100%;
+  font-family: 'Arial';
+  font-size: 20px;
+  font-weight: 600;
+}
+.rodape .sociais {
+  float: right;
+  margin-top: -150px;
+  margin-right: 100px;
+}
+.sociais .titulo-rodape {
+  font-size: 20px;
+  margin-bottom: 25px;
+  /*margin-bottom: 2px;*/
+  font-family: 'Arial';
+  font-weight: 600;
+}
+.navegacao .titulo-rodape {
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-family: 'Arial';
+  font-weight: 600;
+  margin-left: 10px;
+}
