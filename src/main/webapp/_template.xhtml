@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jstl/core">
 <h:head>
 	<h:outputStylesheet name="style.css" library="css" />
   	<title><ui:insert name="title">Traveller</ui:insert></title>
@@ -13,11 +14,14 @@
 <body>
 
 
-
+ 
 <div id="header">
     <ui:insert name="header">
-     
+         
     	 <div class="card">
+    	 
+    	
+    	 <c:choose><c:when test="${usuarioBean.usuario.tipo == null}">
     	 <h:form>
 		  <p:tabMenu activeIndex="#{param.i}">
 		          <p:menuitem value="Home" outcome="index.xhtml" icon="pi pi-fw pi-home">
@@ -30,11 +34,41 @@
 		        </p:menuitem>
 	
 		    </p:tabMenu>
+		    
+		    </h:form></c:when>
+		    <c:otherwise>
+		    	<h:form>
+		  <p:tabMenu activeIndex="#{param.i}">
+		          <p:menuitem value="Home" outcome="listarUsuario.xhtml" icon="pi pi-fw pi-home">
+		            <f:param name="i" value="0"/>
+		        </p:menuitem>
+		        
+		        <p:menuitem  value="Logout" icon="pi pi-fw pi-power-off">
+			    	<h:commandLink action="#{usuarioBean.logout}">Logout</h:commandLink>
+		            <f:param name="i" value="1"/>
+		        </p:menuitem>
+	
+		    </p:tabMenu>
+		    
 		    </h:form>
+		    </c:otherwise>
+		    
+		    </c:choose> 
+    	 
+		    
+		    
+		   <!--    <c:if test="#{usuarioBean.usuario.tipo eq usuario}"> -->
+    	 
+		    
+		    
 		    
 		</div>
+    
     </ui:insert>
+    
 </div>
+
+	
 
 
 <div id="content">

@@ -21,7 +21,7 @@ public class AuthorizationListener implements PhaseListener{
 		String page = context.getViewRoot().getViewId();
 		if(page.equals("/login.xhtml")) return;
 		if(page.equals("/usuario.xhtml")) return;
-		if(page.equals("/listarUsuario.xhtml")) return;
+		
 		
 		Usuario usuario = (Usuario) context.getExternalContext().getSessionMap().get("usuario");
 		
@@ -31,7 +31,6 @@ public class AuthorizationListener implements PhaseListener{
 		}
 		if(usuario.getTipo() == "usuario") {
 			NavigationHandler navigation = context.getApplication().getNavigationHandler();
-			navigation.handleNavigation(context, "", "listarUsuario?faces-redirect=true");
 			navigation.handleNavigation(context, "", "index?faces-redirect=true");
 		}
 		

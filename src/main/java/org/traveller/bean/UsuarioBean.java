@@ -24,6 +24,7 @@ public class UsuarioBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		Usuario exist = new UsuarioDao().exist(usuario);
+		usuario = exist;
 		
 		if(exist != null) {
 			context.getExternalContext().getSessionMap().put("usuario", exist);
@@ -62,6 +63,7 @@ public class UsuarioBean {
 	}
 
 	public Usuario getUsuario() {
+		System.out.println(usuario.getTipo());
 		return usuario;
 	}
 
