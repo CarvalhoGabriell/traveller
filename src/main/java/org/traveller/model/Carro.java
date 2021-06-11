@@ -22,14 +22,15 @@ public class Carro {
 	
 	private String cor;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private Tipo tipo;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private Combustivel tipoFuel;
 	
 	private int qtdLugares;
 
+	
 	public Carro(int ano, String modelo, String marca, String cor, Tipo tipo, Combustivel tipoFuel, int qtdLugares) {
 		super();
 		this.ano = ano;
@@ -40,6 +41,8 @@ public class Carro {
 		this.tipoFuel = tipoFuel;
 		this.qtdLugares = qtdLugares;
 	}
+	
+
 
 	public Carro() {
 		super();
