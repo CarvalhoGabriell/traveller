@@ -8,137 +8,162 @@
 <ui:composition template="_template.xhtml">
     <ui:define name="content">
         <h:form id="form">
-    <div class="card crud-demo">
-        <p:growl id="messages" showDetail="true"/>
-        <p:toolbar>
-            <p:toolbarGroup>
-                <p:commandButton value="New" icon="pi pi-plus" actionListener="#{usuarioBean.save}"
-                                 update=":form:manage-product-content" oncomplete="PF('manageProductDialog').show()"
-                                 styleClass="ui-button-success" style="margin-right: .5rem">
-                    <p:resetInput target=":form:manage-product-content"/>
-                </p:commandButton>
-            </p:toolbarGroup>
-        </p:toolbar>
-        <p:dataTable id="dt-products" widgetVar="dtProducts" var="usuario" value="#{usuarioBean.usuarios}"
-                     reflow="true" styleClass="products-table"
-                     selection="#{usuarioBean.usuarios}" rowKey="#{usuario.idUsuario}" paginator="true"
-                     rows="10" rowSelectMode="add" paginatorPosition="bottom">
-            <f:facet name="header">
-                <div class="products-table-header">
-                    <span style="font-weight: bold">USUÁRIOS</span>
-                    <span class="filter-container ui-input-icon-left">
-                        <i class="pi pi-search"></i>
-                        <p:inputText id="globalFilter" onkeyup="PF('dtProducts').filter()" placeholder="Search"/>
-                    </span>
-                </div>
-            </f:facet>
-           <!--   <p:ajax event="rowSelect" update=":form:delete-products-button"/>
+            <div class="card crud-demo">
+                <p:growl id="messages" showDetail="true" />
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton value="New" icon="pi pi-plus"
+                            actionListener="#{usuarioBean.save}"
+                            update=":form:manage-product-content"
+                            oncomplete="PF('manageProductDialog').show()"
+                            styleClass="ui-button-success" style="margin-right: .5rem">
+                            <p:resetInput target=":form:manage-product-content" />
+                        </p:commandButton>
+                    </p:toolbarGroup>
+                </p:toolbar>
+                <p:dataTable id="dt-products" widgetVar="dtProducts" var="usuario"
+                    value="#{usuarioBean.usuarios}" reflow="true"
+                    styleClass="products-table" selection="#{usuarioBean.usuarios}"
+                    rowKey="#{usuario.idUsuario}" paginator="true" rows="10"
+                    rowSelectMode="add" paginatorPosition="bottom">
+                    <f:facet name="header">
+                        <div class="products-table-header">
+                            <span style="font-weight: bold">USUÁRIOS</span>
+                        </div>
+                    </f:facet>
+                    <!--   <p:ajax event="rowSelect" update=":form:delete-products-button"/>
             <p:ajax event="rowUnselect" update=":form:delete-products-button"/>
             <p:ajax event="rowSelectCheckbox" update=":form:delete-products-button"/>
             <p:ajax event="rowUnselectCheckbox" update=":form:delete-products-button"/>
             <p:ajax event="toggleSelect" update=":form:delete-products-button"/> -->
-            <!-- <p:column selectionMode="multiple" exportable="false"></p:column>  -->
-            
-            <p:column headerText="ID" sortBy="#{usuario.idUsuario}">
-                <h:outputText value="#{usuario.idUsuario}"/>
-            </p:column>
-            <p:column headerText="Nome" sortBy="#{usuario.nome}">
-                <h:outputText value="#{usuario.nome}"/>
-            </p:column>
-            <p:column headerText="Email" sortBy="#{usuario.email}">
-                <h:outputText value="#{usuario.email}"/>
-            </p:column>
-            <p:column headerText="Tipo" sortBy="#{usuario.tipo}">
-                <h:outputText value="#{usuario.tipo}"/>
-            </p:column>
-            <p:column exportable="false">
-                <p:commandButton icon="pi pi-pencil" update=":form:manage-product-content"
-                                 oncomplete="PF('manageProductDialog').show()"
-                                 styleClass="edit-button rounded-button ui-button-success" process="@this">
-                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioDao.findById}"/>
-                    <p:resetInput target=":form:manage-product-content"/>
-                </p:commandButton>
-                <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash" process="@this"
-                                 oncomplete="PF('deleteProductDialog').show()">
-                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioDao.delete}"/>
-                </p:commandButton>
-            </p:column>
-        </p:dataTable>
-        <p:dialog header="Crie um novo usuário!" showEffect="fade" modal="true"
-                  widgetVar="manageProductDialog" responsive="true">
-            <p:outputPanel id="manage-product-content" class="ui-fluid">
-                <p:outputPanel rendered="#{not empty usuarioBean.usuarios}">
-                    <p:graphicImage name="images/product/#{crudView.selectedProduct.image}" library="demo"
-                                    styleClass="product-image"
-                                    rendered="#{not empty crudView.selectedProduct.image}"/>
-                    <div class="p-field p-grid">
-                <h:outputLabel for="name" class="p-col-fixed" style="width:100px" value="Nome" />
-                <div class="p-col">
-                    <p:inputText id="name" value="#{usuarioBean.usuario.nome}" required="true" requiredMessage="O campo nome é obrigatório">
-                        <f:ajax event="blur" render="messages" />
-                    </p:inputText>
-                </div>
+                    <!-- <p:column selectionMode="multiple" exportable="false"></p:column>  -->
+                    <p:column headerText="ID">
+                        <h:outputText value="#{usuario.idUsuario}" />
+                    </p:column>
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{usuario.nome}" />
+                    </p:column>
+                    <p:column headerText="Email">
+                        <h:outputText value="#{usuario.email}" />
+                    </p:column>
+                    <p:column headerText="Tipo">
+                        <h:outputText value="#{usuario.tipo}" />
+                    </p:column>
+                    <p:column exportable="false">
+                        <p:commandButton icon="pi pi-pencil"
+                            update=":form:manage-product-content"
+                            oncomplete="PF('manageProductDialog').show()"
+                            styleClass="edit-button rounded-button ui-button-success"
+                            process="@this">
+                            <f:setPropertyActionListener value="#{usuario}"
+                                target="#{usuarioBean.usuarios}" />
+                            <p:resetInput target=":form:manage-product-content" />
+                        </p:commandButton>
+                        <p:commandButton class="ui-button-warning rounded-button"
+                            icon="pi pi-trash" process="@this"
+                            oncomplete="PF('deleteProductDialog').show()">
+                            <f:setPropertyActionListener value="#{usuario}"
+                                target="#{usuarioBean.usuario}" />
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+                <p:dialog header="Usuário" showEffect="fade" modal="true"
+                    widgetVar="manageProductDialog" responsive="true">
+                    <p:outputPanel id="manage-product-content" class="ui-fluid">
+                        <p:outputPanel rendered="#{not empty usuarioBean.usuarios}">
+                            <p:graphicImage
+                                name="images/product/#{crudView.selectedProduct.image}"
+                                library="demo" styleClass="product-image"
+                                rendered="#{not empty crudView.selectedProduct.image}" />
+                            <div class="p-field p-grid">
+                                <h:outputLabel for="name" class="p-col-fixed"
+                                    style="width:100px" value="Nome" />
+                                <div class="p-col">
+                                    <p:inputText id="name" value="#{usuarioBean.usuario.nome}"
+                                        required="true" requiredMessage="O campo nome é obrigatório">
+                                        <f:ajax event="blur" render="messages" />
+                                    </p:inputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="description" class="p-col-fixed"
+                                    style="width: 100px">Email</label>
+                                <div class="p-col">
+                                    <p:inputText id="email" value="#{usuarioBean.usuario.email}"
+                                        validatorMessage="O campo Email é obrigatório e deve conter pelo menos 10 carácteres ">
+                                        <f:validateRegex
+                                            pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                                        <f:validateLength minimum="10" maximum="150" />
+                                        <f:ajax event="blur" render="messages" />
+                                    </p:inputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <h:outputLabel class="p-col-fixed" style="width:100px"
+                                    for="password" value="Senha" />
+                                <div class="p-col">
+                                    <p:password id="senha" value="#{usuarioBean.usuario.senha}"
+                                        feedback="true" required="true"
+                                        requiredMessage="Senha deve ser Obrigatória"
+                                        validatorMessage="Senha Deve ter pelo menos 5 caracteres">
+                                        <f:validateLength minimum="5" />
+                                        <f:ajax event="blur" render="messages" />
+                                    </p:password>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <p:outputLabel for="dtNasci" value="Data de Nascimento" />
+                                <div class="p-col">
+                                    <p:datePicker id="dtNasci"
+                                        value="#{usuarioBean.usuario.dtNascimento.time}"
+                                        required="true"
+                                        requiredMessage="Data de Nascimento é Obrigatório"
+                                        validatorMessage="Data esta incorreta">
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
+                                        <f:ajax event="blur" render="messages" />
+                                    </p:datePicker>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <h:outputLabel for="typo" class="p-col-fixed"
+                                    style="width:100px" value="Tipo" />
+                                <div class="p-col">
+                                    <p:inputText id="tipo" value="#{usuarioBean.usuario.tipo}"
+                                        required="true" requiredMessage="O tipo é obrigatório">
+                                        <f:ajax event="blur" render="messages" />
+                                    </p:inputText>
+                                </div>
+                            </div>
+                        </p:outputPanel>
+                    </p:outputPanel>
+                    <f:facet name="footer">
+                        <p:commandButton value="Save" icon="pi pi-check"
+                            action="#{usuarioBean.save}" update="manage-product-content"
+                            process="manage-product-content @this" />
+                        <p:commandButton value="Cancel" icon="pi pi-times"
+                            onclick="PF('manageProductDialog').hide()"
+                            class="ui-button-secondary" />
+                    </f:facet>
+                </p:dialog>
+                <p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade"
+                    width="300" message="Deletar o usuário?" header="Confirm"
+                    severity="warn">
+                    <p:commandButton value="Yes" icon="pi pi-check"
+                        actionListener="#{usuarioBean.delet}" process="@this"
+                        oncomplete="PF('deleteProductDialog').hide()" />
+                    <p:commandButton value="No" type="button"
+                        styleClass="ui-button-secondary" icon="pi pi-times"
+                        onclick="PF('deleteProductDialog').hide()" />
+                </p:confirmDialog>
+                <p:confirmDialog global="true" showEffect="fade" width="300">
+                    <p:commandButton value="Yes" type="button"
+                        styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                    <p:commandButton value="No" type="button"
+                        styleClass="ui-confirmdialog-no ui-button-secondary"
+                        icon="pi pi-times" />
+                </p:confirmDialog>
             </div>
-                    <div class="p-field p-grid">
-                <label for="description" class="p-col-fixed" style="width:100px">Email</label>
-                <div class="p-col">
-                    <p:inputText id="email" value="#{usuarioBean.usuario.email}" validatorMessage="O campo Email é obrigatório e deve conter pelo menos 10 carácteres ">
-                            <f:validateRegex
-                                pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
-                    <f:validateLength minimum="10" maximum="150" />
-                        <f:ajax event="blur" render="messages" />
-                    </p:inputText>
-                </div>
-            </div>
-                    <div class="p-field p-grid">
-                         <h:outputLabel class="p-col-fixed" style="width:100px" for="password" value="Senha"/>
-                         <div class ="p-col">
-                 <p:password id="senha" value="#{usuarioBean.usuario.senha}" feedback="true" required="true" requiredMessage="Senha deve ser Obrigatória"  validatorMessage="Senha Deve ter pelo menos 5 caracteres">
-                    <f:validateLength minimum="5"/>
-                    <f:ajax event="blur" render="messages"/>
-                 </p:password>
-              </div>
-            </div>
-                    <div class="p-field p-grid">
-                    <p:outputLabel for="dtNasci" value="Data de Nascimento"/>
-                    <div class="p-col">
-                    <p:datePicker id="dtNasci" value="#{usuarioBean.usuario.dtNascimento.time}"  required="true" requiredMessage="Data de Nascimento é Obrigatório" validatorMessage="Data esta incorreta">
-                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
-                        <f:ajax event="blur" render="messages"/>
-                    </p:datePicker>
-                </div>
-            </div>
-            <div class="p-field p-grid">
-                <h:outputLabel for="typo" class="p-col-fixed" style="width:100px" value="tipo" />
-                <div class="p-col">
-                    <p:inputText id="tipo" value="#{usuarioBean.usuario.tipo}" required="true" requiredMessage="O tipo é obrigatório">
-                        <f:ajax event="blur" render="messages" />
-                    </p:inputText>
-                </div>
-            </div>
-                </p:outputPanel>
-            </p:outputPanel>
-            <f:facet name="footer">
-                <p:commandButton value="Save" icon="pi pi-check" action="#{usuarioBean.save}"
-                                 update="manage-product-content" process="manage-product-content @this"/>
-                <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('manageProductDialog').hide()"
-                                 class="ui-button-secondary"/>
-            </f:facet>
-        </p:dialog>
-        <p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade" width="300"
-                         message="Deletar o produto??" header="Confirm" severity="warn">
-            <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{usuarioDao.delete}"
-                             process="@this" oncomplete="PF('deleteProductDialog').hide()"/>
-            <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
-                             onclick="PF('deleteProductDialog').hide()"/>
-        </p:confirmDialog>
-        <p:confirmDialog global="true" showEffect="fade" width="300">
-            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>
-            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary"
-                             icon="pi pi-times"/>
-        </p:confirmDialog>
-    </div>
-</h:form>
+        </h:form>
     </ui:define>
 </ui:composition>
 </html>

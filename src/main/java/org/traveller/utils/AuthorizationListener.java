@@ -30,6 +30,7 @@ public class AuthorizationListener implements PhaseListener{
 			navigation.handleNavigation(context, "", "login?faces-redirect=true");
 		}
 		if(usuario.getTipo() == "usuario") {
+			if(page.equals("/listarUsuario.xhtml")) return;
 			NavigationHandler navigation = context.getApplication().getNavigationHandler();
 			navigation.handleNavigation(context, "", "index?faces-redirect=true");
 		}
