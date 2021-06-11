@@ -6,8 +6,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Carro {
@@ -31,11 +29,7 @@ public class Carro {
 	private Combustivel tipoFuel;
 	
 	private int qtdLugares;
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "user_aval")
-	private Avaliacao aval;
+
 	
 	public Carro(int ano, String modelo, String marca, String cor, Tipo tipo, Combustivel tipoFuel, int qtdLugares) {
 		super();
@@ -48,16 +42,6 @@ public class Carro {
 		this.qtdLugares = qtdLugares;
 	}
 	
-	
-	
-	public Avaliacao getAval() {
-		return aval;
-	}
-
-
-	public void setAval(Avaliacao aval) {
-		this.aval = aval;
-	}
 
 
 	public Carro() {
